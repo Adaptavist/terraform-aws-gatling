@@ -18,7 +18,6 @@ definitions:
 pipelines:
   default:
     - step: *tf_validate
-    - step: *release
 
   branches:
     main:

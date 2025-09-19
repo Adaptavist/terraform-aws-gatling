@@ -34,11 +34,13 @@ variable "stage" {
 }
 
 variable "ecr_repo_arn" {
-  type = string
+  type        = string
+  description = "ARN of the ECR repository that stores the Gatling load test image."
 }
 
 variable "ecr_repo_url" {
-  type = string
+  type        = string
+  description = "Repository URL of the ECR image."
 }
 
 variable "image_tag" {

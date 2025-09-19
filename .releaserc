@@ -1,5 +1,4 @@
-# .releaserc
-branches: ["main", "AVSTCLOUD-3149-Provision-infra-for-Gatling-test"]
+branches: ["main"]
 plugins:
   - "@semantic-release/commit-analyzer"
   - "@semantic-release/release-notes-generator"
