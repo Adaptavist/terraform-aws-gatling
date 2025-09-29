@@ -1,9 +1,34 @@
 # Gatling Fargate Module
 
+
 This Terraform module provisions the AWS resources needed to run Gatling load tests in ECS Fargate.  
 It creates an ECS cluster, task definition, security group, CloudWatch logs, and an S3 bucket to store Gatling reports.  
 The module is designed to be triggered on-demand from a CI/CD pipeline, so you only pay for the tasks when you run them.
 ---
+
+## Variables
+
+| Name         | Description                                    | Type         | Default | Required |
+| ------------ | ---------------------------------------------- | ------------ | ------- | -------- |
+| service_name | Name of the ECS service / task                 | string       | n/a     | yes      |
+| task_cpu     | CPU units for the Fargate task                 | number       | n/a     | yes      |
+| task_memory  | Memory (MB) for the Fargate task               | number       | n/a     | yes      |
+| vpc_id       | ID of the VPC where resources will be created  | string       | n/a     | yes      |
+| region       | AWS region                                     | string       | n/a     | yes      |
+| stage        | Deployment stage (e.g., dev, stg, prod)        | string       | n/a     | yes      |
+| subnet_ids   | List of subnet IDs for ECS tasks               | list(string) | n/a     | yes      |
+| ecr_repo_url | URL of the ECR repository containing the image | string       | n/a     | yes      |
+| image_tag    | Docker image tag to deploy                     | string       | latest  | no       |
+| ecr_repo_arn | ARN of the ECR repository                      | string       | n/a     | yes      |
+
+## Outputs
+
+| Name           | Description                              |
+| -------------- | ---------------------------------------- |
+| cluster_id     | ID of the ECS cluster                    |
+| task_def_arn   | ARN of the created task definition       |
+| security_group | ID of the security group for the service |
+| s3_bucket_id   | ID of the S3 bucket for Gatling reports  |
 
 ## Example Usage
 
