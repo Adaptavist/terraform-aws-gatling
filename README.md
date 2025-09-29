@@ -1,6 +1,7 @@
 # Gatling Fargate Module
 
-
+---
+## About
 This Terraform module provisions the AWS resources needed to run Gatling load tests in ECS Fargate.  
 It creates an ECS cluster, task definition, security group, CloudWatch logs, and an S3 bucket to store Gatling reports.  
 The module is designed to be triggered on-demand from a CI/CD pipeline, so you only pay for the tasks when you run them.
