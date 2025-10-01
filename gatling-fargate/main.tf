@@ -180,7 +180,7 @@ resource "aws_iam_role_policy" "task" {
 data "aws_iam_policy_document" "task_policy_document" {
 
   statement {
-    effect    = "Allow"
+    effect = "Allow"
     actions = [
       "ssm:GetParameter",
       "ssm:GetParameters",
