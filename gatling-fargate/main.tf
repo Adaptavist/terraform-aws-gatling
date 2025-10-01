@@ -181,13 +181,11 @@ data "aws_iam_policy_document" "task_policy_document" {
 
   statement {
     effect    = "Allow"
-    actions   = ["ssm:DescribeParameters"]
-    resources = ["*"]
-  }
-
-  statement {
-    effect    = "Allow"
-    actions   = ["ssm:GetParameters"]
+    actions = [
+      "ssm:GetParameter",
+      "ssm:GetParameters",
+      "ssm:DescribeParameters"
+    ]
     resources = ["*"]
   }
 
