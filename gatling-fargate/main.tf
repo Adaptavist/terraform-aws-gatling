@@ -181,6 +181,18 @@ data "aws_iam_policy_document" "task_policy_document" {
 
   statement {
     effect    = "Allow"
+    actions   = ["ssm:DescribeParameters"]
+    resources = ["*"]
+  }
+
+  statement {
+    effect    = "Allow"
+    actions   = ["ssm:GetParameters"]
+    resources = ["*"]
+  }
+
+  statement {
+    effect    = "Allow"
     actions   = ["s3:PutObject", "s3:ListBucket", "s3:GetObject"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.gatling_results.bucket}", "arn:aws:s3:::${aws_s3_bucket.gatling_results.bucket}/*"]
   }
