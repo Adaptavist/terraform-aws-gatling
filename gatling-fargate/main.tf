@@ -243,7 +243,7 @@ resource "aws_sns_topic_policy" "policy" {
   policy = data.aws_iam_policy_document.sns_policy.json
 }
 
-# EventBridge rule: ECS task STOPPED for family+cluster
+# EventBridge rule
 resource "aws_cloudwatch_event_rule" "gatling_stopped" {
   name        = "gatling-task-stopped"
   description = "Notify when gatling tasks stop"
@@ -258,7 +258,7 @@ resource "aws_cloudwatch_event_rule" "gatling_stopped" {
   })
 }
 
-# Target: SNS with a concise message
+# Target SNS
 resource "aws_cloudwatch_event_target" "sns" {
   rule      = aws_cloudwatch_event_rule.gatling_stopped.name
   target_id = "sns"
