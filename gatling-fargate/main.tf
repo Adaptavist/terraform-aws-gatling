@@ -273,7 +273,18 @@ resource "aws_cloudwatch_event_target" "sns" {
       reason = "$.detail.containers[0].reason"
       time   = "$.detail.stoppedAt"
     }
-    input_template = "Gatling task <task> stopped at <time>\nFamily: <family>\nExitCode: <code>\nContainerReason: <reason>\nTaskReason: <stop>"
+
+    # Valid JSON object (no external quoting needed)
+    input_template = <<EOF
+{
+  "task": "<task>",
+  "time": "<time>",
+  "family": "<family>",
+  "exitCode": "<code>",
+  "containerReason": "<reason>",
+  "taskReason": "<stop>"
+}
+EOF
   }
 }
 
