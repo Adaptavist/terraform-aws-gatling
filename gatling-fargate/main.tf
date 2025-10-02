@@ -251,7 +251,7 @@ resource "aws_cloudwatch_event_rule" "gatling_stopped" {
     source        = ["aws.ecs"]
     "detail-type" = ["ECS Task State Change"]
     detail = {
-      clusterArn = aws_ecs_cluster.this.arn
+      clusterArn = [aws_ecs_cluster.this.arn]
       lastStatus = ["STOPPED"]
       group      = [{ prefix = "family:${aws_ecs_task_definition.fargate.family}" }]
     }
