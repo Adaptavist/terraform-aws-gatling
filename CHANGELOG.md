@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.0.3...v1.1.0) (2025-10-02)
+
+
+### Features
+
+* (add s3 bucket and sns) ([84baaad](https://github.com/Adaptavist/terraform-aws-gatling/commit/84baaad832f176086deddd41c69720be03916aa5))
+
 ## [1.0.3](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.0.2...v1.0.3) (2025-10-01)
 
 
