@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.0.2...v1.0.3) (2025-10-01)
+
+
+### Bug Fixes
+
+* (allow access to fetch single and list of ssm) ([f167216](https://github.com/Adaptavist/terraform-aws-gatling/commit/f16721696db68ad8f13606529a4b216479472d3d))
+* (correct format) ([5443dc7](https://github.com/Adaptavist/terraform-aws-gatling/commit/5443dc7078e88685063d2dd18c1eba9accdca1fe))
+
 ## [1.0.2](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.0.1...v1.0.2) (2025-10-01)
 
 
