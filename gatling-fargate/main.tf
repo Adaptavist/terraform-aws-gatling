@@ -24,6 +24,9 @@ module "ecs-container-definition" {
     {
       name : "EB_ENVIRONMENT",
       value : var.stage
+    },
+    { name : "RESULTS_BUCKET",
+      value : aws_s3_bucket.gatling_results.bucket
     }
   ]
   log_configuration = {
@@ -215,4 +218,68 @@ data "aws_iam_policy_document" "task_policy_document" {
 
     resources = ["${aws_cloudwatch_log_group.this.arn}:*"]
   }
+}
+
+resource "aws_sns_topic" "gatling_complete" {
+  name = "gatling-run-complete"
+}
+
+# Allow EventBridge to publish to the topic
+data "aws_iam_policy_document" "sns_policy" {
+  statement {
+    sid     = "AllowEventBridgePublish"
+    effect  = "Allow"
+    actions = ["sns:Publish"]
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+    resources = [aws_sns_topic.gatling_complete.arn]
+  }
+}
+
+resource "aws_sns_topic_policy" "policy" {
+  arn    = aws_sns_topic.gatling_complete.arn
+  policy = data.aws_iam_policy_document.sns_policy.json
+}
+
+# EventBridge rule: ECS task STOPPED for family+cluster
+resource "aws_cloudwatch_event_rule" "gatling_stopped" {
+  name        = "gatling-task-stopped"
+  description = "Notify when gatling tasks stop"
+  event_pattern = jsonencode({
+    source        = ["aws.ecs"]
+    "detail-type" = ["ECS Task State Change"]
+    detail = {
+      clusterArn = aws_ecs_cluster.this.arn
+      lastStatus = ["STOPPED"]
+      group      = [{ prefix = "family:${aws_ecs_task_definition.fargate.family}" }]
+    }
+  })
+}
+
+# Target: SNS with a concise message
+resource "aws_cloudwatch_event_target" "sns" {
+  rule      = aws_cloudwatch_event_rule.gatling_stopped.name
+  target_id = "sns"
+  arn       = aws_sns_topic.gatling_complete.arn
+
+  input_transformer {
+    input_paths = {
+      task   = "$.detail.taskArn"
+      family = "$.detail.group"
+      stop   = "$.detail.stoppedReason"
+      code   = "$.detail.containers[0].exitCode"
+      reason = "$.detail.containers[0].reason"
+      time   = "$.detail.stoppedAt"
+    }
+    input_template = "Gatling task <task> stopped at <time>\nFamily: <family>\nExitCode: <code>\nContainerReason: <reason>\nTaskReason: <stop>"
+  }
+}
+
+# Email subscription
+resource "aws_sns_topic_subscription" "gatling_email" {
+  topic_arn = aws_sns_topic.gatling_complete.arn
+  protocol  = "email"
+  endpoint  = var.notify_email
 }

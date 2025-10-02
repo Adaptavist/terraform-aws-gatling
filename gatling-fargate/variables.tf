@@ -47,3 +47,8 @@ variable "image_tag" {
   type        = string
   description = "Container image tag to be used by the service"
 }
+
+variable "notify_email" {
+  type        = string
+  description = "Email address that subscribes to the sns topic"
+}

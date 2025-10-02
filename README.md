@@ -6,18 +6,19 @@ This Terraform module provisions the AWS resources needed to run Gatling load te
 
 ## Variables
 
-| Name         | Description                                    | Type         | Default | Required |
-| ------------ | ---------------------------------------------- | ------------ | ------- | -------- |
-| service_name | Name of the ECS service / task                 | string       | n/a     | yes      |
-| task_cpu     | CPU units for the Fargate task                 | number       | n/a     | yes      |
-| task_memory  | Memory (MB) for the Fargate task               | number       | n/a     | yes      |
-| vpc_id       | ID of the VPC where resources will be created  | string       | n/a     | yes      |
-| region       | AWS region                                     | string       | n/a     | yes      |
-| stage        | Deployment stage (e.g., dev, stg, prod)        | string       | n/a     | yes      |
-| subnet_ids   | List of subnet IDs for ECS tasks               | list(string) | n/a     | yes      |
-| ecr_repo_url | URL of the ECR repository containing the image | string       | n/a     | yes      |
-| image_tag    | Docker image tag to deploy                     | string       | latest  | no       |
-| ecr_repo_arn | ARN of the ECR repository                      | string       | n/a     | yes      |
+| Name         | Description                                            | Type         | Default | Required |
+| ------------ |--------------------------------------------------------| ------------ | ------- | -------- |
+| service_name | Name of the ECS service / task                         | string       | n/a     | yes      |
+| task_cpu     | CPU units for the Fargate task                         | number       | n/a     | yes      |
+| task_memory  | Memory (MB) for the Fargate task                       | number       | n/a     | yes      |
+| vpc_id       | ID of the VPC where resources will be created          | string       | n/a     | yes      |
+| region       | AWS region                                             | string       | n/a     | yes      |
+| stage        | Deployment stage (e.g., dev, stg, prod)                | string       | n/a     | yes      |
+| subnet_ids   | List of subnet IDs for ECS tasks                       | list(string) | n/a     | yes      |
+| ecr_repo_url | URL of the ECR repository containing the image         | string       | n/a     | yes      |
+| image_tag    | Docker image tag to deploy                             | string       | latest  | no       |
+| ecr_repo_arn | ARN of the ECR repository                              | string       | n/a     | yes      |
+| notify_email | Email address to be notified once the test is complete | string       | n/a     | yes      |
 
 ## Outputs
 
@@ -32,7 +33,7 @@ This Terraform module provisions the AWS resources needed to run Gatling load te
 
 ```hcl
 module "gatling_fargate" {
-  source       = "git::ssh://git@bitbucket.org/adaptavistlabs/module-aws-gatling.git//gatling-fargate?ref=v1.0.0"
+  source       = "github.com/Adaptavist/terraform-aws-gatling//gatling-fargate?ref=v1.0.3"
   service_name = "gatling-runner"
   task_cpu     = 1024
   task_memory  = 2048
@@ -41,7 +42,8 @@ module "gatling_fargate" {
   stage        = var.stage
   subnet_ids   = module.network.public_subnet_ids
   ecr_repo_url = "074742550667.dkr.ecr.us-west-2.amazonaws.com/shared-services/proxy-gatling"
-  image_tag    = var.image_tag
+  image_tag    = "latest"
   ecr_repo_arn = "arn:aws:ecr:us-west-2:074742550667:repository/shared-services/proxy-gatling"
+  notify_email = "example.com"
 }
 
