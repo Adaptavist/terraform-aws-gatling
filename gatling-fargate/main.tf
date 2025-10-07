@@ -269,20 +269,17 @@ resource "aws_cloudwatch_event_target" "sns" {
   input_transformer {
     input_paths = {
       task   = "$.detail.taskArn"
-      family = "$.detail.group"
       stop   = "$.detail.stoppedReason"
       code   = "$.detail.containers[0].exitCode"
       reason = "$.detail.containers[0].reason"
       time   = "$.detail.stoppedAt"
     }
 
-    # Valid JSON object (no external quoting needed)
     input_template = <<EOF
 {
+  "message": "Gatling run completed for ${var.target_service} with exit code <code>.",
   "task": "<task>",
   "time": "<time>",
-  "family": "<family>",
-  "exitCode": "<code>",
   "containerReason": "<reason>",
   "taskReason": "<stop>"
 }
