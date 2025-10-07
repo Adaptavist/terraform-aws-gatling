@@ -26,8 +26,8 @@ module "ecs-container-definition" {
     { name = "SERVICE_NAME", value = var.target_service },
     { name = "SIM_CLASS", value = var.sim_class },
     { name = "AWS_REGION", value = var.region },
-    { name = "CLUSTER", value = var.service_name },
-    { name = "TASK_DEF", value = aws_ecs_task_definition.fargate.family },
+    { name = "CLUSTER", value = "${var.service_name}-cluster" },
+    { name = "TASK_DEF", value = var.service_name },
     { name = "SECURITY_GROUP", value = aws_security_group.fargate.id },
     { name = "SUBNETS", value = var.subnet_ids }
   ]
