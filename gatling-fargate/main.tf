@@ -22,9 +22,7 @@ module "ecs-container-definition" {
   port_mappings = []
   environment = [
     { name : "EB_ENVIRONMENT", value : var.stage },
-    { name : "RESULTS_BUCKET", value : aws_s3_bucket.gatling_results.bucket },
-    { name = "SERVICE_NAME", value = var.target_service },
-    { name = "SIM_CLASS", value = var.sim_class }
+    { name : "RESULTS_BUCKET", value : aws_s3_bucket.gatling_results.bucket }
   ]
   log_configuration = {
     logDriver = "awslogs"
