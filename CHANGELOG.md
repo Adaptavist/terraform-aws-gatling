@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.2.0...v1.3.0) (2025-10-07)
+
+
+### Features
+
+* (format) ([4a8593e](https://github.com/Adaptavist/terraform-aws-gatling/commit/4a8593e2583ade884bef14a8b2dddb0ae712f5af))
+
 ## [1.2.0](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.1.2...v1.2.0) (2025-10-07)
 
 
