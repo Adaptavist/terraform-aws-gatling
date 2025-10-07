@@ -22,7 +22,9 @@ module "ecs-container-definition" {
   port_mappings = []
   environment = [
     { name : "EB_ENVIRONMENT", value : var.stage },
-    { name : "RESULTS_BUCKET", value : aws_s3_bucket.gatling_results.bucket }
+    { name : "RESULTS_BUCKET", value : aws_s3_bucket.gatling_results.bucket },
+    { name = "SERVICE_NAME", value = var.target_service },
+    { name = "SIM_CLASS", value = var.sim_class }
   ]
   log_configuration = {
     logDriver = "awslogs"
@@ -270,7 +272,7 @@ resource "aws_cloudwatch_event_target" "sns" {
 
     input_template = <<EOF
 {
-  "message": "Gatling run completed for ${var.target_service} with exit code <code>.",
+  "message": "Gatling run completed for ${var.target_service}-service with exit code <code>.",
   "task": "<task>",
   "time": "<time>",
   "containerReason": "<reason>",
