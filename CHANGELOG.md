@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.1.2...v1.2.0) (2025-10-07)
+
+
+### Features
+
+* (pass network variables as env) ([7ddc2e2](https://github.com/Adaptavist/terraform-aws-gatling/commit/7ddc2e2ca51f073049f21dec004f49a51caf916f))
+
 ## [1.1.2](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.1.1...v1.1.2) (2025-10-02)
 
 
