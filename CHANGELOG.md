@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.5](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.3.4...v1.3.5) (2025-10-07)
+
+
+### Bug Fixes
+
+* (remove env variable) ([ebf7aa4](https://github.com/Adaptavist/terraform-aws-gatling/commit/ebf7aa42c7d6b8525380bfe9967e522d59bd9fe5))
+
 ## [1.3.4](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.3.3...v1.3.4) (2025-10-07)
 
 
