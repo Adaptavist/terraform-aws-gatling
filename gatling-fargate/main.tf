@@ -29,7 +29,7 @@ module "ecs-container-definition" {
     { name = "CLUSTER", value = "${var.service_name}-cluster" },
     { name = "TASK_DEF", value = var.service_name },
     { name = "SECURITY_GROUP", value = aws_security_group.fargate.id },
-    { name = "SUBNETS",         value = join(",", var.subnet_ids) }
+    { name = "SUBNETS", value = join(",", var.subnet_ids) }
   ]
   log_configuration = {
     logDriver = "awslogs"
