@@ -6,28 +6,21 @@ This Terraform module provisions the AWS resources needed to run Gatling load te
 
 ## Variables
 
-| Name         | Description                                            | Type         | Default | Required |
-| ------------ |--------------------------------------------------------| ------------ | ------- | -------- |
-| service_name | Name of the ECS service / task                         | string       | n/a     | yes      |
-| task_cpu     | CPU units for the Fargate task                         | number       | n/a     | yes      |
-| task_memory  | Memory (MB) for the Fargate task                       | number       | n/a     | yes      |
-| vpc_id       | ID of the VPC where resources will be created          | string       | n/a     | yes      |
-| region       | AWS region                                             | string       | n/a     | yes      |
-| stage        | Deployment stage (e.g., dev, stg, prod)                | string       | n/a     | yes      |
-| subnet_ids   | List of subnet IDs for ECS tasks                       | list(string) | n/a     | yes      |
-| ecr_repo_url | URL of the ECR repository containing the image         | string       | n/a     | yes      |
-| image_tag    | Docker image tag to deploy                             | string       | latest  | no       |
-| ecr_repo_arn | ARN of the ECR repository                              | string       | n/a     | yes      |
-| notify_email | Email address to be notified once the test is complete | string       | n/a     | yes      |
-
-## Outputs
-
-| Name           | Description                              |
-| -------------- | ---------------------------------------- |
-| cluster_id     | ID of the ECS cluster                    |
-| task_def_arn   | ARN of the created task definition       |
-| security_group | ID of the security group for the service |
-| s3_bucket_id   | ID of the S3 bucket for Gatling reports  |
+| Name           | Description                                            | Type         | Default | Required |
+|----------------|--------------------------------------------------------|--------------|---------|----------|
+| service_name   | Name of the ECS service / task                         | string       | n/a     | yes      |
+| task_cpu       | CPU units for the Fargate task                         | number       | n/a     | yes      |
+| task_memory    | Memory (MB) for the Fargate task                       | number       | n/a     | yes      |
+| vpc_id         | ID of the VPC where resources will be created          | string       | n/a     | yes      |
+| region         | AWS region                                             | string       | n/a     | yes      |
+| stage          | Deployment stage (e.g., dev, stg, prod)                | string       | n/a     | yes      |
+| subnet_ids     | List of subnet IDs for ECS tasks                       | list(string) | n/a     | yes      |
+| ecr_repo_url   | URL of the ECR repository containing the image         | string       | n/a     | yes      |
+| image_tag      | Docker image tag to deploy                             | string       | latest  | no       |
+| ecr_repo_arn   | ARN of the ECR repository                              | string       | n/a     | yes      |
+| notify_email   | Email address to be notified once the test is complete | string       | n/a     | yes      |
+| target_service | Name of the target service that needs to be tested     | string       | n/a     | yes      |
+| sim_class      | Name of the simulation class                           | string       | n/a     | yes      |
 
 ## Example Usage
 
@@ -45,5 +38,7 @@ module "gatling_fargate" {
   image_tag    = "latest"
   ecr_repo_arn = "arn:aws:ecr:us-west-2:074742550667:repository/shared-services/proxy-gatling"
   notify_email = "example.com"
+  target_service = "proxy"
+  sim_class = "com.adaptavist.testing.ProxyServiceSimulation"
 }
 

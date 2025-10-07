@@ -52,3 +52,13 @@ variable "notify_email" {
   type        = string
   description = "Email address that subscribes to the sns topic"
 }
+
+variable "target_service" {
+  type        = string
+  description = "Name of the target service that needs to be tested"
+}
+
+variable "sim_class" {
+  type        = string
+  description = "Name of the simulation class"
+}
