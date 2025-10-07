@@ -24,12 +24,7 @@ module "ecs-container-definition" {
     { name : "EB_ENVIRONMENT", value : var.stage },
     { name : "RESULTS_BUCKET", value : aws_s3_bucket.gatling_results.bucket },
     { name = "SERVICE_NAME", value = var.target_service },
-    { name = "SIM_CLASS", value = var.sim_class },
-    { name = "AWS_REGION", value = var.region },
-    { name = "CLUSTER", value = "${var.service_name}-cluster" },
-    { name = "TASK_DEF", value = var.service_name },
-    { name = "SECURITY_GROUP", value = aws_security_group.fargate.id },
-    { name = "SUBNETS", value = join(",", var.subnet_ids) }
+    { name = "SIM_CLASS", value = var.sim_class }
   ]
   log_configuration = {
     logDriver = "awslogs"
