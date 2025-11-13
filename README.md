@@ -43,9 +43,9 @@ module "gatling_fargate" {
   region       = data.aws_region.current.name
   stage        = var.stage
   subnet_ids   = module.network.public_subnet_ids
-  ecr_repo_url = "074742550667.dkr.ecr.us-west-2.amazonaws.com/shared-services/proxy-gatling"
+  ecr_repo_url = "<1234>.dkr.ecr.<region>.amazonaws.com/<repository-name>"
   image_tag    = "latest"
-  ecr_repo_arn = "arn:aws:ecr:us-west-2:074742550667:repository/shared-services/proxy-gatling"
+  ecr_repo_arn = "arn:aws:ecr:<region>:<1234>:repository/<repository-name>"
   notify_email = "example.com"
   target_service = "proxy"
   sim_class      = "com.adaptavist.testing.ProxyServiceSimulation"
