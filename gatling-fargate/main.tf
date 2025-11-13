@@ -1,5 +1,13 @@
 data "aws_caller_identity" "current" {}
 
+data "aws_ssm_parameter" "private_key_arn_1" {
+  name = "/sr/jwks/private-key/secret-arn-1"
+}
+
+data "aws_ssm_parameter" "private_key_arn_2" {
+  name = "/sr/jwks/private-key/secret-arn-2"
+}
+
 resource "aws_ecs_cluster" "this" {
   name = "${var.service_name}-cluster"
 
@@ -187,6 +195,17 @@ data "aws_iam_policy_document" "task_policy_document" {
       "ssm:DescribeParameters"
     ]
     resources = ["*"]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "secretsmanager:GetSecretValue"
+    ]
+    resources = [
+      private_key_arn_1.value,
+      private_key_arn_2.value
+    ]
   }
 
   statement {
