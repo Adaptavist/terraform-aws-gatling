@@ -1,5 +1,5 @@
 # .releaserc
-branches: ["master", "next"]
+branches: ["main", "next"]
 plugins:
   - "@semantic-release/changelog"
   - "@semantic-release/commit-analyzer"
