@@ -1,3 +1,18 @@
+# [1.1.0](http://bitbucket.org/adaptavistlabs/module-aws-gatling/compare/v1.0.0...v1.1.0) (2025-11-13)
+
+
+### Bug Fixes
+
+* add semantic .releaserc with GitHub mirror configuration ([db95af2](http://bitbucket.org/adaptavistlabs/module-aws-gatling/commits/db95af21a48f821ee05b0cfff50cbe9d19a46600))
+* update master to main in releaserc file ([052962b](http://bitbucket.org/adaptavistlabs/module-aws-gatling/commits/052962bc836cf82b6a1554dab1a37331daaff068))
+* update master to main on branch pipeline definition ([682b1b0](http://bitbucket.org/adaptavistlabs/module-aws-gatling/commits/682b1b0e358ffc8a2ddcf6f16a61a49413c18fb4))
+* update readme to remove sensitive ecr info ([d879dd9](http://bitbucket.org/adaptavistlabs/module-aws-gatling/commits/d879dd991e02641c82a66a5d2d2b997ccab69da3))
+
+
+### Features
+
+* add pipelines file for checkov and release ([250d6de](http://bitbucket.org/adaptavistlabs/module-aws-gatling/commits/250d6de719deb042b4c2cb71e0b32dddaa0bbe61))
+
 # Changelog
 
 ## [1.3.6](https://github.com/Adaptavist/terraform-aws-gatling/compare/v1.3.5...v1.3.6) (2025-10-07)
