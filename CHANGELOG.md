@@ -1,3 +1,10 @@
+## [1.4.1](http://bitbucket.org/adaptavistlabs/module-aws-gatling/compare/v1.4.0...v1.4.1) (2025-11-14)
+
+
+### Bug Fixes
+
+* fix ssm param references in task role ([2636c03](http://bitbucket.org/adaptavistlabs/module-aws-gatling/commits/2636c035ca4367573a569d71670f0e52dfdab271))
+
 # [1.4.0](http://bitbucket.org/adaptavistlabs/module-aws-gatling/compare/v1.3.6...v1.4.0) (2025-11-13)
 
 
