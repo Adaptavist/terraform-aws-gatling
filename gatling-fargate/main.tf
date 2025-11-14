@@ -203,8 +203,8 @@ data "aws_iam_policy_document" "task_policy_document" {
       "secretsmanager:GetSecretValue"
     ]
     resources = [
-      private_key_arn_1.value,
-      private_key_arn_2.value
+      data.aws_ssm_parameter.private_key_arn_1.value,
+      data.aws_ssm_parameter.private_key_arn_2.value
     ]
   }
 
