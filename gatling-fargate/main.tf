@@ -104,14 +104,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "gatling_results" {
     status = "Enabled"
 
     expiration {
-      days = 30 # keep reports 30 days, tweak as needed
+      days = 365
     }
   }
 }
 
 resource "aws_cloudwatch_log_group" "this" {
   name_prefix       = var.service_name
-  retention_in_days = 90
+  retention_in_days = 30
 }
 
 resource "aws_iam_role" "execution_role" {
