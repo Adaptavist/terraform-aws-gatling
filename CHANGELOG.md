@@ -1,3 +1,10 @@
+## [1.4.2](http://bitbucket.org/adaptavistlabs/module-aws-gatling/compare/v1.4.1...v1.4.2) (2026-06-08)
+
+
+### Bug Fixes
+
+* keeps S3 reports for 1 year and cloudwatch logs for 30 days ([6d0a6b2](http://bitbucket.org/adaptavistlabs/module-aws-gatling/commits/6d0a6b235822d955afa6dfe820a8775c5942589f))
+
 ## [1.4.1](http://bitbucket.org/adaptavistlabs/module-aws-gatling/compare/v1.4.0...v1.4.1) (2025-11-14)
 
 
