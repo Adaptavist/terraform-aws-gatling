@@ -1,3 +1,10 @@
+# [1.5.0](http://bitbucket.org/adaptavistlabs/module-aws-gatling/compare/v1.4.2...v1.5.0) (2026-11-16)
+
+
+### Features
+
+* add container_insights variable for the ECS cluster (AVSTCLOUD-4888) ([07253f3](http://bitbucket.org/adaptavistlabs/module-aws-gatling/commits/07253f34d3d3d625cff6c662db487c597410ef00))
+
 ## [1.4.2](http://bitbucket.org/adaptavistlabs/module-aws-gatling/compare/v1.4.1...v1.4.2) (2026-06-08)
 
 
