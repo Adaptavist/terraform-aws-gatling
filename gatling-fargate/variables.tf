@@ -62,3 +62,14 @@ variable "sim_class" {
   type        = string
   description = "Name of the simulation class"
 }
+
+variable "container_insights" {
+  type        = string
+  description = "Container Insights mode for the ECS cluster. \"enhanced\" adds the per-task and per-container metrics the ECS console shows on a task's Metrics tab; \"enabled\" only publishes cluster and task-definition-family aggregates."
+  default     = "enabled"
+
+  validation {
+    condition     = contains(["disabled", "enabled", "enhanced"], var.container_insights)
+    error_message = "container_insights must be one of: disabled, enabled, enhanced."
+  }
+}

@@ -21,6 +21,7 @@ This Terraform module provisions the AWS resources needed to run Gatling load te
 | notify_email | Email address to be notified once the test is complete | string       | n/a     | yes      |
 | target_service | Name of the target service that needs to be tested     | string       | n/a     | yes      |
 | sim_class      | Name of the simulation class                           | string       | n/a     | yes      |
+| container_insights | Container Insights mode for the cluster: `disabled`, `enabled` or `enhanced` (per-task and per-container metrics) | string | enabled | no |
 
 ## Outputs
 
